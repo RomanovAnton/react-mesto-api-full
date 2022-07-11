@@ -18,6 +18,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(require('./middlewares/cors'));
+
 app.use(requestLogger);
 app.post(
   '/signup',
