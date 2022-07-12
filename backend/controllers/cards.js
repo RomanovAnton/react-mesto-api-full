@@ -2,12 +2,6 @@ const Card = require('../models/card');
 const NotFoundError = require('../utils/errors/notFound-error');
 const ForbiddenError = require('../utils/errors/forbidden-error');
 
-module.exports.getCards = (req, res, next) => {
-  Card.find({})
-    .then((cards) => res.send(cards))
-    .catch((err) => next(err));
-};
-
 module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
   const owner = req.user._id;

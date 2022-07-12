@@ -1,12 +1,11 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
-const { getCards, createCard, deleteCard } = require('../controllers/cards');
+const { createCard, deleteCard } = require('../controllers/cards');
 const { likeCard, dislikeCard } = require('../controllers/cards');
 const auth = require('../middlewares/auth');
 const { regExpUrl } = require('../utils/regexp/regExpUrl');
 
 router.use(auth);
-router.get('/', getCards);
 
 router.post(
   '/',
