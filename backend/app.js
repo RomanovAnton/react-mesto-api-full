@@ -24,6 +24,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(helmet());
+app.use(errorLogger);
 app.use(limiter);
 app.use(require('./middlewares/cors'));
 
@@ -38,7 +39,6 @@ app.use('/', require('./routes/auth'));
 app.use('/users', auth, require('./routes/users'));
 app.use('/cards', auth, require('./routes/cards'));
 
-app.use(errorLogger);
 app.use(errors());
 app.use((req, res, next) => {
   next(new NotFoundError('Некорректно указан путь'));
